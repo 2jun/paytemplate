@@ -1,5 +1,11 @@
 package com.zaj.template.pay.util;
 
+import cn.hutool.core.util.StrUtil;
+import com.alibaba.fastjson.JSON;
+import com.alipay.api.AlipayClient;
+import com.alipay.api.DefaultAlipayClient;
+import com.alipay.api.internal.util.AlipaySignature;
+import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.zaj.template.pay.config.AlipayConfig;
 import com.zaj.template.pay.vo.AlipayVO;
 import com.zaj.template.pay.vo.RechargeRecordInfoVO;
@@ -79,7 +85,7 @@ public class AliPayUtil {
         try {
             return AlipaySignature.rsaCheckV1(paramsMap, alipayConfig.getPublicKey(), alipayConfig.getCharset(),
                     alipayConfig.getSignType());
-        } catch (RuntimeException e) {
+        } catch (Exception e) {
             LOGGER.error(e.getMessage());
             LOGGER.info("*********************验签失败********************");
             return false;
@@ -104,7 +110,7 @@ public class AliPayUtil {
                 for (String val : values) {
                     sb.append(",").append(val);
                 }
-                retMap.put(name, sb.toString().substring(1));
+                retMap.put(name, sb.substring(1));
             } else {
                 retMap.put(name, "");
             }
