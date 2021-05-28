@@ -35,7 +35,7 @@ public class AliPayController {
     @Resource
     private AliPayUtil alipayUtil;
 
-    @RequestMapping("/payDemo1")
+    @RequestMapping("alipay/payDemo1")
     public String payDemo1() {
         return "payDemo1";
     }

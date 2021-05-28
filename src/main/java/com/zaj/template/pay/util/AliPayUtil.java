@@ -21,7 +21,6 @@ import java.util.Set;
 /**
  * @ClassName AliPayUtil
  * @Description TODO
- * @Author yuanxun
  * @Date 2020-12-02 17:20
  * @Version 1.0
  **/
